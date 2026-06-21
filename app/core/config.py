@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import field_validator
-from typing import List, Any
+from typing import List, Any, Optional
 
 
 class Settings(BaseSettings):
@@ -36,7 +36,7 @@ class Settings(BaseSettings):
             return cleaned_origins
         return v
 
-    REDIS_URL: str | None = None
+    REDIS_URL: Optional[str] = None
 
     SECRET_KEY: str = "dev-secret-key-change-in-production"
 
@@ -44,7 +44,7 @@ class Settings(BaseSettings):
     ROOM_CLEANUP_INTERVAL_SECONDS: int = 3600
     INACTIVE_ROOM_TIMEOUT_SECONDS: int = 7200
 
-    SENTRY_DSN: str | None = "https://3de78001d6efde50d11fa59d32009fe4@o4508014103232512.ingest.de.sentry.io/4510693152522320"
+    SENTRY_DSN: Optional[str] = "https://3de78001d6efde50d11fa59d32009fe4@o4508014103232512.ingest.de.sentry.io/4510693152522320"
     SENTRY_TRACES_SAMPLE_RATE: float = 1.0
 
     model_config = SettingsConfigDict(
